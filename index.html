@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -20,7 +20,37 @@
     </main>
 
     <script>
+
+        const video = document.querySelector('video');
+        const button = document.querySelector('button');
+
+        function MediaPlayer(config) {
+            this.media = config.el;
+        }
+
+        MediaPlayer.prototype.play = function () {
+            this.media.play();
+            console.log(this.media)
+        }
+        MediaPlayer.prototype.pause = function () {
+            this.media.pause();
+        }
+
+        const player = new MediaPlayer({ el: video });
+        MediaPlayer.prototype.paused = () => this.media.paused
+
+
+        button.onclick = () => {
+            console.log(player)
+            if (player.paused) {
+                player.play();
+            } else {
+                player.pause();
+            }
+        }
+
     </script>
+
 </body>
 
 </html>
